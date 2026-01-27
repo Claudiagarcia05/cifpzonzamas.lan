@@ -5,11 +5,9 @@
     use Illuminate\Database\Eloquent\Model;
 
     class Libro extends Model {
-        protected $fillable = [
-            'titulo',
-            'autor',
-            'anho',
-            'genero',
-            'descripcion'
+        static $cods_genero = [
+            '' => ''
+            ,'NV' => 'Novela'
+            ,'SP' => 'Suspense'
         ];
     }

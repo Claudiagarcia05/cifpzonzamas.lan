@@ -3,8 +3,9 @@
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\DatosController;
     use App\Http\Controllers\LibroController;
+    use App\Http\Controllers\UsuarioController;
 
-    // Ruta básic: URL base (/) que devuelve la vista welcome
+    // Ruta basica
     Route::get('/', function () {
         
         return view('welcome');
@@ -55,12 +56,19 @@
 
     // Ruta LibroController
     Route::get('/libro', [LibroController::class, 'index'])->name('libro.index');
-    Route::get('/libro/alta', [LibroController::class, 'create'])->name('libro.create');
-    Route::post('/libro/alta', [LibroController::class, 'create'])->name('libro.create.store');
+    Route::get('/libro/create', [LibroController::class, 'create'])->name('libro.create');
+    Route::post('/libro/create', [LibroController::class, 'create'])->name('libro.create');
 
-    Route::get('/libro/modi/{id}', [LibroController::class, 'edit'])->name('libro.edit');
-    Route::put('/libro/modi/{id}', [LibroController::class, 'update'])->name('libro.update');
+    Route::get('/libro/edit/{i}', [LibroController::class, 'edit'])->name('libro.edit');
+    Route::post('/libro/edit', [LibroController::class, 'edit'])->name('libro.edit');
 
-    Route::get('/libro/ver/{id}', [LibroController::class, 'ver'])->name('libro.ver');
+    Route::get('/libro/show/{i}', [LibroController::class, 'show'])->name('libro.show');
 
-    Route::get('/libro/delete/{id}', [LibroController::class, 'destroy'])->name('libro.destroy');
+    Route::get('/libro/destroy/{i}', [LibroController::class, 'destroy'])->name('libro.destroy');
+    Route::post('/libro/destroy', [LibroController::class, 'destroy'])->name('libro.destroy');
+
+
+    // NO SE VE
+    Route::get('/usuario', [UsuarioController::class, 'index']);
+
+    Route::get('/usuario/store', [UsuarioController::class, 'store'])->name('usuario.store');
