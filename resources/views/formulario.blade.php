@@ -3,6 +3,7 @@
     <head>
         <title>Formulario de Datos</title>
     </head>
+    
     <body>
         <h1>Formulario Datos</h1>
         
