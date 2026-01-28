@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
-{
-    protected $fillable = ['nombre', 'email'];
+    class Usuario extends Model {
+        protected $fillable = ['nombre', 'email'];
 
+        public function posts() {
+            return $this->hasMany(Post::class);
+        }
 
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
     }
-
-}
