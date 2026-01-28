@@ -1,23 +1,32 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Route;
-    use App\Models\Usuario;
+use Illuminate\Http\Request;
 
-    class UsuarioController extends Controller {
-        public function index() {
-            return "Página principal de usuarios - Listado";
-        }
+use Illuminate\Support\Facades\Route;
 
-        function show($id) {
-            $url = route('usuario.show', ['id' => 5]);
-            return "Hola listado 11" . $url;
-        }
+use App\Models\Usuario;
 
-        function store(Request $request) {
-            $usuario = new Usuario();
-            $usuario->create(['nombre'=>'Andrés', 'email' => 'andres_calamaro@gmail.com']);
-        }
+class UsuarioController extends Controller
+{
+    
+    function show($id)
+    {
+        $url = route('usuario.show', ['id' => 5]);
+        return "Hola listado 11" . $url;
     }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    function store(Request $request)
+    {
+        $usuario = new Usuario();
+
+        $usuario->create(['nombre'=>'Andrés', 'email' => 'andres_calamaro@gmail.com']);
+    }
+
+
+}

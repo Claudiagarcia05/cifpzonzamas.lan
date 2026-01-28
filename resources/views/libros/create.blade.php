@@ -15,8 +15,12 @@
 
     @endif
 
+
+
     <form action="/libro/{{ $oper }}" method="POST">
+
         @csrf
+
         <input name="id" type="hidden" value="{{ $libro->id }}" />
         <div class="mb-3">
             <label for="idtitulo" class="@error('titulo') text-danger @enderror form-label">Título</label>
@@ -53,6 +57,9 @@
                         //$selected = $clave_genero == $libro->genero ? 'selected' : '';
                     echo $options;
                 @endphp
+
+                
+
             </select>
             @error('anho')
                 <span class="text-danger">{{ $message }}</span>
@@ -61,12 +68,18 @@
         </div>
 
         <div class="mb-3">
+
             <label for="idgenero" class="@error('genero') text-danger @enderror form-label">Género</label>
             <select  {{ $disabled }} class="@error('genero') is-invalid @enderror form-select" aria-label="Horror" id="idgenero" name="genero" aria-describedby="generoHelp">
+
                 @foreach ($cods_genero as $clave_genero => $texto_genero)    
+
                     @php
+
                         $selected = $clave_genero == $libro->genero ? 'selected' : '';
+
                     @endphp
+
                     <option value="{{ $clave_genero }}" {{ $selected }}>{{ $texto_genero }}</option>
                 @endforeach
             </select>

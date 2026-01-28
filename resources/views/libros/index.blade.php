@@ -3,6 +3,7 @@
 @section('contenido')
 
 <div class="container pt-4">
+
     <table class="table">
         <thead>
             <tr>
@@ -15,6 +16,9 @@
         </thead>
         <tbody>
             @foreach ($libros as $libro)       
+            
+
+
                 <tr>
                     <th>
                         <a href="/libro/show/{{ $libro->id }}" class="btn btn-primary"><i class="bi bi-search"></i></a>
@@ -24,16 +28,22 @@
                     </th>
                     <td>{{ $libro->titulo }}</td>
                     <td>{{ $libro->autor }}</td>
-                    <td>{{ $cods_genero[$libro->genero] ?? 'Género no encontrado' }}</td>
+                    <td>{{ $cods_genero[$libro->genero] }}</td>
                     <td>{{ $libro->anho }}</td>
                 </tr>
             @endforeach
 
             {{ $libros->links() }}
+
+
+
         </tbody>
     </table>
 
     <a class="btn btn-primary" href="{{ route('libro.create') }}">Nuevo Libro</a>
+
+
+
 </div>
 
 @endsection
