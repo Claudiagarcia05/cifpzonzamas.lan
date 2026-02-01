@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
+    use App\Models\User;
 
-use App\Models\User;
+    class UserController extends Controller {
+        public function index() {
+            $users = User::all();
 
-class UserController extends Controller
-{
-    public function index()
-    {
-        $users = User::all();
-        return view('users.index', ['users' => $users]);
+            return view('users.index', ['users' => $users]);
+        }
+
+        public function show($id) {
+            $user = User::find($id);
+
+            return view('users.show', ['user' => $user]);
+        }
     }
-
-    public function show($id)
-    {
-        $user = User::find($id);
-        return view('users.show', ['user' => $user]);
-    }
-}

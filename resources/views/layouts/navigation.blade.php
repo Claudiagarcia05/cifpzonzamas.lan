@@ -10,15 +10,30 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- En la navegación principal -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Libro') }}
+                    
+                    <!-- Enlace para Libros -->
+                    <x-nav-link :href="route('libro.index')" :active="request()->routeIs('libro.*')">
+                        {{ __('Libros') }}
+                    </x-nav-link>
+
+                    <!-- Enlace para Aulas -->
+                    <x-nav-link :href="route('aula.index')" :active="request()->routeIs('aula.*')">
+                        {{ __('Aulas') }}
+                    </x-nav-link>
+
+                    <!-- Enlace para Tutores -->
+                    <x-nav-link :href="route('tutor.index')" :active="request()->routeIs('tutor.*')">
+                        {{ __('Tutores') }}
+                    </x-nav-link>
+
+                    <!-- Enlace para Profesores -->
+                    <x-nav-link :href="route('profesor.index')" :active="request()->routeIs('profesor.*')">
+                        {{ __('Profesores') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -75,7 +90,28 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            
+            <!-- Enlace para Libro (móvil) -->
+            <x-responsive-nav-link :href="route('libro.index')" :active="request()->routeIs('libro.*')">
+                {{ __('Libros') }}
+            </x-responsive-nav-link>
+
+            <!-- Enlace para Aulas (móvil) -->
+            <x-responsive-nav-link :href="route('aula.index')" :active="request()->routeIs('aula.*')">
+                {{ __('Aulas') }}
+            </x-responsive-nav-link>
+
+            <!-- Enlace para Tutores (móvil) -->
+            <x-responsive-nav-link :href="route('tutor.index')" :active="request()->routeIs('tutor.*')">
+                {{ __('Tutores') }}
+            </x-responsive-nav-link>
+
+            <!-- Enlace para Profesor (móvil) -->
+            <x-responsive-nav-link :href="route('profesor.index')" :active="request()->routeIs('profesor.*')">
+                {{ __('Profesores') }}
+            </x-responsive-nav-link>
         </div>
+    </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

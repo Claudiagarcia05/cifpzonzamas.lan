@@ -10,17 +10,11 @@
     </ul>
 
     @if($datos['exito'])
-
         <p class="alert alert-success"> {{ $datos['exito'] }} </p>
-
     @endif
 
-
-
-    <form action="/libro/{{ $oper }}" method="POST">
-
+    <form action="{{ $oper == 'create' ? route('libro.store') : ($oper == 'edit' ? route('libro.update', $libro->id) : ($oper == 'destroy' ? route('libro.destroy', $libro->id) : '#')) }}" method="POST">
         @csrf
-
         <input name="id" type="hidden" value="{{ $libro->id }}" />
         <div class="mb-3">
             <label for="idtitulo" class="@error('titulo') text-danger @enderror form-label">Título</label>
@@ -45,20 +39,15 @@
             <select  {{ $disabled }} class="@error('anho') is-invalid @enderror form-select" aria-label="2026" id="idanho" name="anho" aria-describedby="anhoHelp">
                 <option></option>
                 @php
-
                     $options = '';
-                    for($anho= date('Y')-10; $anho <= date('Y'); $anho++)
-                    {
+                    for($anho= date('Y')-10; $anho <= date('Y'); $anho++) {
                         $selected = $anho == $libro->anho ? 'selected' : '';
 
                         $options .= "<option value=\"{$anho}\" {$selected}>{$anho}</option>";
                     }
-
                         //$selected = $clave_genero == $libro->genero ? 'selected' : '';
                     echo $options;
                 @endphp
-
-                
 
             </select>
             @error('anho')
@@ -68,18 +57,12 @@
         </div>
 
         <div class="mb-3">
-
             <label for="idgenero" class="@error('genero') text-danger @enderror form-label">Género</label>
             <select  {{ $disabled }} class="@error('genero') is-invalid @enderror form-select" aria-label="Horror" id="idgenero" name="genero" aria-describedby="generoHelp">
-
                 @foreach ($cods_genero as $clave_genero => $texto_genero)    
-
                     @php
-
                         $selected = $clave_genero == $libro->genero ? 'selected' : '';
-
                     @endphp
-
                     <option value="{{ $clave_genero }}" {{ $selected }}>{{ $texto_genero }}</option>
                 @endforeach
             </select>
@@ -98,14 +81,14 @@
         </div>
 
         @if (!$disabled)
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-primary">Enviar</button>
         @endif
 
         @if ($oper == 'destroy')
-            <button type="submit" class="btn btn-danger">Eliminar libro</button>
+            <button type="submit" class="btn btn-outline-danger">Eliminar libro</button>
         @endif
     </form>
     
-    <a class="btn btn-info mt-3" href="{{ route('libro.index') }}">Volver</a>
+    <a class="btn btn-outline-info mt-3" href="{{ route('libro.index') }}"><i class="bi bi-arrow-left"></i></a>
 </div>
 @endsection

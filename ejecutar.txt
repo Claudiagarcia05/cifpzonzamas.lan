@@ -1,0 +1,11 @@
+Crea un nuevo CRUD para alta de familias profesionales de FP. Busca todas las familias profesionales que se estudian en el CIFP Zonzamas en lanzarte.
+
+Crea un tabla familias_profesionales con la siguiente estrucuta:
+
+id
+nombre
+descripcion
+imagen
+--datos auditoría de laravel.
+
+Tendrá también un índice formado con un listado donde se podrá ver el nombre y la imagen.
