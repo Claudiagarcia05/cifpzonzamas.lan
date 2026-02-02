@@ -3,7 +3,6 @@
 @section('contenido')
 
 <div class="container pt-4">
-
     <table class="table">
         <thead>
             <tr>
@@ -14,17 +13,14 @@
                 <th scope="col">Año</th>
             </tr>
         </thead>
+        
         <tbody>
             @foreach ($libros as $libro)       
-            
-
-
                 <tr>
                     <th>
-                        <a href="/libro/show/{{ $libro->id }}" class="btn btn-primary"><i class="bi bi-search"></i></a>
-                        <a href="/libro/edit/{{ $libro->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                        <a href="/libro/destroy/{{ $libro->id }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-
+                        <a href="{{ route('libro.edit', $libro->id) }}" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{{ route('libro.show', $libro->id) }}" class="btn btn-outline-warning"><i class="bi bi-search"></i></a>
+                        <a href="{{ route('libro.destroy.view', $libro->id) }}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
                     </th>
                     <td>{{ $libro->titulo }}</td>
                     <td>{{ $libro->autor }}</td>
@@ -34,16 +30,10 @@
             @endforeach
 
             {{ $libros->links() }}
-
-
-
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ route('libro.create') }}">Nuevo Libro</a>
-
-
-
+    <a class="btn btn-outline-primary" href="{{ route('libro.create') }}"><i class="bi bi-plus-circle"></i> Nuevo Libro</a>
 </div>
 
 @endsection
